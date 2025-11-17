@@ -66,6 +66,7 @@ Cada edificio implementa estas VLANs utilizando rangos dedicados dentro de **10.
 
 Cada VLAN tiene:  
 ✔ IP Virtual HSRP (Ejemplo: IP virtual HSRP -- 10.0.11.250 )
+
 ✔ Dirección destinada al WLC si la VLAN aloja SSID 
 
 ---
@@ -167,9 +168,9 @@ Los SSID se asignan mediante **AP Groups**, cada uno asociado a la VLAN correspo
 ACCESO RESTRINGIDO
 
 ### **Seguridad en Consola**
-line console 0
-password tunoentras
-login
+- line console 0
+- password tunoentras
+- login
 
 
 ---
@@ -178,11 +179,11 @@ login
 
 La red accede a Internet a través de un Router de Frontera, donde se implementa:
 
-NAT Overload (PAT) para toda la red interna 10.0.0.0/8
+- NAT Overload (PAT) para toda la red interna 10.0.0.0/8
 
-Traducción estática de servicios alojados en el Data Center
+- Traducción estática de servicios alojados en el Data Center
 
-Políticas de seguridad perimetral
+- Políticas de seguridad perimetral
 
 Esto permite que todo el campus navegue hacia Internet usando una única dirección pública.
 
@@ -191,10 +192,11 @@ Esto permite que todo el campus navegue hacia Internet usando una única direcci
 ## 🔧 STP – Diseño sin Bucles
 
 ✔ STP solo se ejecuta en enlaces L2 entre switches de Acceso y Distribución.
+
 ❌ No se ejecuta en ningún enlace L3 (Core–Distribución, Spine–Leaf, etc.).
 
 Tecnología usada:
-Rapid PVST+
+- Rapid PVST+
 
 ---
 

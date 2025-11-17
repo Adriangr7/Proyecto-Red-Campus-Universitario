@@ -79,8 +79,7 @@ Los enlaces L3 utilizan redes /30 agrupadas por bloques.
 - SWE11–SWC2 → 10.250.1.5 /30  
 - Spine1–Leaf1 → 10.250.6.1 /30  
 
-**EtherChannel:**  
-- Canal 12 configurado con LACP → **OK**
+
 
 ---
 
@@ -172,7 +171,6 @@ login
 
 ## 🌐 NAT e Internet — Router Frontera
 
-- Peering/BGP con ISP  
 - Seguridad perimetral  
 - PAT para toda la red **10.0.0.0/8**  
 - Publicación de servicios  
@@ -202,10 +200,7 @@ El diseño final proporciona una red de campus universitaria robusta, modular, s
 
 ---
 
-## 📁 Archivos del Proyecto
 
-Solo se incluye:
-campus_universidad.pkt
 
 Toda la configuración se encuentra implementada dentro del archivo.
 

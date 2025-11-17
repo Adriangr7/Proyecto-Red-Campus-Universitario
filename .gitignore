@@ -1,0 +1,36 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Carpetas de sistema
+__MACOSX/
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Archivos de configuración de editores
+.vscode/
+.idea/
+
+# Archivos generados por el sistema
+*.log
+
+# Archivos de Python si usas herramientas para documentación
+__pycache__/
+*.pyc
+
+# Node (por si generas diagramas con herramientas web)
+node_modules/
+
+# Documents (pero permite PDFs y la memoria final)
+~$*.docx
+~$*.pptx
+
+# Permitidos (NO ignorar)
+!*.pkt
+!*.md
+!*.pdf
+!LICENSE

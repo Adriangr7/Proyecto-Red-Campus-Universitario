@@ -65,6 +65,7 @@ Cada edificio implementa estas VLANs utilizando rangos dedicados dentro de **10.
 - VLAN 99 → 10.0.99.0/24  
 
 Cada VLAN tiene:  
+
 ✔ IP Virtual HSRP (Ejemplo: IP virtual HSRP -- 10.0.11.250 )
 
 ✔ Dirección destinada al WLC si la VLAN aloja SSID 

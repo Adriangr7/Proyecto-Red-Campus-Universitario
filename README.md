@@ -199,11 +199,3 @@ Core actúa como **root primario** y **root secundario**.
 El diseño final proporciona una red de campus universitaria robusta, modular, segura y escalable, utilizando tecnologías profesionales de Cisco. Incluye redundancia completa, arquitectura Spine–Leaf, políticas de seguridad, movilidad WiFi simulada, servicios centralizados y un plan de direccionamiento avanzado.
 
 ---
-
-
-
-Toda la configuración se encuentra implementada dentro del archivo.
-
-
-Toda la red opera bajo:
-

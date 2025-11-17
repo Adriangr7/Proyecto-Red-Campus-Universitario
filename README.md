@@ -1,6 +1,6 @@
 # 🏫 Topología de Campus Universitario — Diseño y Configuración Completa
 
-Este proyecto consiste en el diseño y configuración integral de una red de campus universitario, basada en una arquitectura jerárquica de tres niveles: Core, Distribución y Acceso. El entorno incluye VLANs, OSPF, HSRP, EtherChannel, STP, seguridad avanzada, WLC, DHCP, NTP, servidores y políticas de red.
+Este proyecto consiste en el diseño y configuración integral de una red de campus universitario, basada en una arquitectura jerárquica de tres niveles: Core, Distribución y Acceso. El entorno incluye VLANs, OSPF, HSRP, EtherChannel, STP, seguridad avanzada, WLC, DHCP, NTP, servidores, políticas de red y salida a Internet mediante NAT.
 
 La topología representa un campus con tres edificios (A, B y C), un Data Center, un router de borde, infraestructura WiFi redundante y servicios corporativos internos. Los edificios y su arquitectura interna están diseñados con loops, siguiendo buenas prácticas de resiliencia y redundancia.
 
@@ -65,8 +65,8 @@ Cada edificio implementa estas VLANs utilizando rangos dedicados dentro de **10.
 - VLAN 99 → 10.0.99.0/24  
 
 Cada VLAN tiene:  
-✔ IP Virtual HSRP  
-✔ Dirección destinada al WLC si la VLAN aloja SSID  
+✔ IP Virtual HSRP (Ejemplo: IP virtual HSRP -- 10.0.11.250 )
+✔ Dirección destinada al WLC si la VLAN aloja SSID 
 
 ---
 
@@ -129,13 +129,16 @@ Los SSID se asignan mediante **AP Groups**, cada uno asociado a la VLAN correspo
 
 ## 🔧 Elementos Implementados
 
-- VTP → OK  
-- OSPF → OK  
-- HSRP → OK  
-- VSIs → OK  
-- STP con prioridades → OK  
-- CDP/LLDP → OK  
-- DTP → Deshabilitado por seguridad  
+- VTP  
+- OSPF 
+- HSRP 
+- VSIs 
+- STP con prioridades 
+- CDP/LLDP 
+- DTP → Deshabilitado por seguridad
+- EtherChannel
+- Seguridad (DHCP Snooping, DAI, PortSecurity)
+- NAT Overload
 - Equipamiento completo en los switches (PCs, VoIP, APs, routers, servidores)
 
 ---
@@ -152,7 +155,9 @@ Los SSID se asignan mediante **AP Groups**, cada uno asociado a la VLAN correspo
 - Sticky habilitado  
 
 ### **AAA + RADIUS**
-Integrado en switches y WLC.
+- Servidor ubicado en el Data Center e integrado en WLCs.
+- Solo los WLC utilizan el servidor RADIUS para autenticación WiFi 802.1X.
+- Packet Tracer no soporta Mobility Groups, por lo que se simula el roaming con WLC separados.
 
 ### **SSH Only**
 - Usuario: `admin / modoadmin`  
@@ -169,18 +174,27 @@ login
 
 ---
 
-## 🌐 NAT e Internet — Router Frontera
+## 🌐 Internet Connectivity & NAT Overload
 
-- Seguridad perimetral  
-- PAT para toda la red **10.0.0.0/8**  
-- Publicación de servicios  
+La red accede a Internet a través de un Router de Frontera, donde se implementa:
+
+NAT Overload (PAT) para toda la red interna 10.0.0.0/8
+
+Traducción estática de servicios alojados en el Data Center
+
+Políticas de seguridad perimetral
+
+Esto permite que todo el campus navegue hacia Internet usando una única dirección pública.
 
 ---
 
 ## 🔧 STP – Diseño sin Bucles
 
-RSTP activo en toda la red.  
-Core actúa como **root primario** y **root secundario**.
+✔ STP solo se ejecuta en enlaces L2 entre switches de Acceso y Distribución.
+❌ No se ejecuta en ningún enlace L3 (Core–Distribución, Spine–Leaf, etc.).
+
+Tecnología usada:
+Rapid PVST+
 
 ---
 

@@ -1,0 +1,283 @@
+Building configuration...
+
+Current configuration : 4957 bytes
+!
+version 16.3.2
+service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname SWE31
+!
+!
+enable secret 5 $1$mERr$m0HjE1kpr4vy47pl/zB420
+!
+!
+!
+!
+!
+!
+no ip cef
+ip routing
+!
+no ipv6 cef
+!
+!
+!
+!
+lldp run
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+ip domain-name switchacceso.com
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10,20,30,40,50,60,70,90 priority 4096
+!
+!
+!
+!
+!
+!
+interface Port-channel38
+ no switchport
+ ip address 10.250.3.2 255.255.255.252
+!
+interface Port-channel39
+ no switchport
+ ip address 10.250.3.6 255.255.255.252
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+ no switchport
+ no ip address
+ channel-group 38 mode passive
+ no lldp receive
+ no lldp transmit
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0/7
+ no switchport
+ no ip address
+ channel-group 38 mode passive
+ no lldp receive
+ no lldp transmit
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0/8
+ no switchport
+ no ip address
+ channel-group 39 mode passive
+ no lldp receive
+ no lldp transmit
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0/9
+ no switchport
+ no ip address
+ channel-group 39 mode passive
+ no lldp receive
+ no lldp transmit
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0/10
+ switchport mode trunk
+ no cdp enable
+!
+interface GigabitEthernet1/0/11
+ switchport mode trunk
+ no cdp enable
+!
+interface GigabitEthernet1/0/12
+ switchport mode trunk
+ no cdp enable
+!
+interface GigabitEthernet1/0/13
+ switchport mode trunk
+ no cdp enable
+!
+interface GigabitEthernet1/0/14
+ switchport mode trunk
+ no cdp enable
+!
+interface GigabitEthernet1/0/15
+ switchport mode trunk
+ no cdp enable
+!
+interface GigabitEthernet1/0/16
+ switchport mode trunk
+ no cdp enable
+!
+interface GigabitEthernet1/0/17
+ switchport mode trunk
+ no cdp enable
+!
+interface GigabitEthernet1/0/18
+ no cdp enable
+!
+interface GigabitEthernet1/0/19
+ no cdp enable
+!
+interface GigabitEthernet1/0/20
+ no cdp enable
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 0002.162b.5301
+ ip address 10.0.16.1 255.255.252.0
+ ip helper-address 10.250.7.2
+ standby 10 ip 10.0.19.250
+ standby 10 priority 120
+ standby 10 preempt
+!
+interface Vlan20
+ mac-address 0002.162b.5302
+ ip address 10.0.104.1 255.255.252.0
+ ip helper-address 10.250.7.2
+ standby 20 ip 10.0.107.250
+ standby 20 priority 120
+ standby 20 preempt
+!
+interface Vlan30
+ mac-address 0002.162b.5303
+ ip address 10.0.33.1 255.255.255.0
+ ip helper-address 10.250.7.2
+ standby 30 ip 10.0.33.250
+ standby 30 priority 120
+ standby 30 preempt
+!
+interface Vlan40
+ mac-address 0002.162b.5304
+ ip address 10.0.36.1 255.255.252.0
+ ip helper-address 10.250.7.2
+ standby 40 ip 10.0.39.250
+ standby 40 priority 120
+ standby 40 preempt
+!
+interface Vlan50
+ mac-address 0002.162b.5305
+ ip address 10.0.56.1 255.255.252.0
+ ip helper-address 10.250.7.2
+ standby 50 ip 10.0.59.250
+ standby 50 priority 120
+ standby 50 preempt
+!
+interface Vlan60
+ mac-address 0002.162b.5306
+ ip address 10.0.62.1 255.255.255.0
+ ip helper-address 10.250.7.2
+ standby 60 ip 10.0.62.250
+ standby 60 priority 120
+ standby 60 preempt
+!
+interface Vlan70
+ mac-address 0002.162b.5307
+ ip address 10.0.72.1 255.255.255.0
+ ip helper-address 10.250.7.2
+ standby 70 ip 10.0.72.250
+ standby 70 priority 120
+ standby 70 preempt
+!
+interface Vlan90
+ mac-address 0002.162b.5308
+ ip address 10.0.92.1 255.255.255.0
+ ip helper-address 10.250.7.2
+ standby 90 ip 10.0.92.250
+ standby 90 priority 120
+ standby 90 preempt
+!
+interface Vlan99
+ mac-address 0002.162b.5309
+ ip address 10.0.101.1 255.255.255.0
+ ip helper-address 10.250.7.2
+ standby 101 ip 10.0.101.250
+ standby 101 priority 120
+ standby 101 preempt
+!
+router ospf 10
+ router-id 31.31.31.31
+ log-adjacency-changes
+ network 10.0.16.0 0.0.3.255 area 0
+ network 10.0.104.0 0.0.3.255 area 0
+ network 10.0.33.0 0.0.0.255 area 0
+ network 10.0.36.0 0.0.3.255 area 0
+ network 10.0.56.0 0.0.3.255 area 0
+ network 10.0.62.0 0.0.0.255 area 0
+ network 10.0.72.0 0.0.0.255 area 0
+ network 10.0.92.0 0.0.0.255 area 0
+ network 10.250.3.0 0.0.0.3 area 0
+ network 10.250.3.4 0.0.0.3 area 0
+ network 10.0.101.0 0.0.0.255 area 0
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.250.3.1 
+ip route 0.0.0.0 0.0.0.0 10.250.3.5 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^CACCESO RESTRINGIDO^C
+!
+!
+!
+!
+logging 10.250.9.2
+line con 0
+ password 7 08355940061C0B03000A1F
+ login
+!
+line aux 0
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+!
+ntp authentication-key 1 md5 082C434A0618011A1B05 7
+ntp authenticate
+ntp trusted-key 1
+ntp server 10.250.3.5 key 1
+!
+end

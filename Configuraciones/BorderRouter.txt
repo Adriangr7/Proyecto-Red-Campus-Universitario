@@ -1,0 +1,95 @@
+Building configuration...
+
+Current configuration : 1052 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname RouterBorder
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2901/K9 sn FTX15244FKT-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 200.0.0.2 255.255.255.252
+ ip nat outside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 10.250.250.1 255.255.255.252
+ ip nat inside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/0
+ no ip address
+!
+interface GigabitEthernet0/1/0
+ no ip address
+!
+interface GigabitEthernet0/2/0
+ no ip address
+!
+interface GigabitEthernet0/3/0
+ no ip address
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip nat inside source list TRADUCCION interface GigabitEthernet0/0 overload
+ip classless
+ip route 0.0.0.0 0.0.0.0 GigabitEthernet0/1 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard TRADUCCION
+ permit 10.0.0.0 0.255.255.255
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end

@@ -85,7 +85,7 @@ Los enlaces L3 utilizan redes /30 agrupadas por bloques.
 
 ---
 
-## 🛰 Routing — OSPF Área 10
+## 🛰 Routing — OSPF 
 Toda la red opera bajo:
 router ospf 10
 
